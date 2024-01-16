@@ -11,10 +11,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   const [areas, setAreas] = useState([]);
   const [cities, setCities] = useState([]);
-  const [branches, setBranches] = useState([]);
   const [selectedArea, setSelectedArea] = useState('');
   const [selectedCity, setSelectedCity] = useState('');
   const [searchText, setSearchText] = useState('');
+  // to save the data that display:
+  const [branches, setBranches] = useState([]);
   // to save the original data:
   const [allBranches, setAllBranches] = useState([]);
 
@@ -35,7 +36,7 @@ function App() {
       .catch(error => console.error('Error fetching data:', error));
   }, []);
 
-  // function to get uniquevalue
+  // function to get every value one time
   const getUniqueValues = (data, key) => {
     return [...new Set(data.map(item => item[key]))];
   };
@@ -62,7 +63,7 @@ function App() {
         (!selectedArea || branch.store_region === selectedArea) &&
         // filter data by the selectedCity
         (!selectedCity || branch.city === selectedCity) &&
-        // filter data by the text un the searc box
+        // filter data by the text in the searc box
         (branch.store_title.toLowerCase().includes(searchText.toLowerCase()) ||
          branch.store_address.toLowerCase().includes(searchText.toLowerCase()))
       );
@@ -94,6 +95,10 @@ function App() {
     const text = event.target.value;
     setSearchText(text);
   };
+  // return function:
+  // dropdown and text fields component
+  // The table of the brunches - 
+  // every row display only if match to all the feilds: area, city and the text in the search text
   return (
     <div id="MainView" className=''>
       <h3>Company Branches</h3>

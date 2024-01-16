@@ -3,6 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const CitiesDropdown = ({ cities, handleCityChange }) => {
+  
+  // dropdown to select the city
   return (
     <div>
       <select className="form-control" onChange={handleCityChange}>

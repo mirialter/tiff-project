@@ -3,6 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const BranchesTable = ({ branches }) => {
+  
+  // display the branches
   return (
     <table className='table table-hover'>
       <thead>
